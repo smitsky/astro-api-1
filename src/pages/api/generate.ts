@@ -1,8 +1,11 @@
+export const prerender = false;
 import type { APIRoute } from 'astro';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { createClient } from '@supabase/supabase-js';
 
 export const POST: APIRoute = async ({ request }) => {
+  console.log("Gemini Key exists:", !!import.meta.env.GEMINI_API_KEY);
+  console.log("Supabase URL exists:", !!import.meta.env.SUPABASE_URL);
   try {
     const body = await request.json();
     const { prompt } = body;
