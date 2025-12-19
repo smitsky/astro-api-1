@@ -6,12 +6,19 @@ export default defineConfig({
   adapter: netlify(),
   vite: {
     ssr: {
-      // Line 68 Fix: Explicitly externalize the AI SDK
-      external: ['@google/generative-ai']
+      // This tells the bundler: "Don't try to build these, 
+      // they will be provided by the server environment."
+      external: [
+        '@google/generative-ai',
+        '@supabase/supabase-js'
+      ]
     },
     optimizeDeps: {
-      // Improves local dev stability on Windows
-      exclude: ['@google/generative-ai']
+      // Helps local development on Windows
+      exclude: [
+        '@google/generative-ai', 
+        '@supabase/supabase-js'
+      ]
     }
   }
 });
