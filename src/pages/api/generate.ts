@@ -20,7 +20,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // 1. Initialize Gemini
     const genAI = new GoogleGenerativeAI(import.meta.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3-flash" });
 
     // 2. Generate Content
     const result = await model.generateContent(prompt);
