@@ -6,11 +6,11 @@ export default defineConfig({
   adapter: netlify(),
   vite: {
     ssr: {
-      // This tells Vite not to bundle this package
+      // Line 68 Fix: Explicitly externalize the AI SDK
       external: ['@google/generative-ai']
     },
     optimizeDeps: {
-      // This helps local development stability
+      // Improves local dev stability on Windows
       exclude: ['@google/generative-ai']
     }
   }
